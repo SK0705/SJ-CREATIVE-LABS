@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Branding & Design - SJ Creative Labs</title>
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #14b8a6;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-title img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #14b8a6;
+    }
+
+    .cta-buttons a {
+      margin-left: 10px;
+      padding: 8px 14px;
+      background-color: #14b8a6;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .cta-buttons a:hover {
+      background-color: #0f766e;
+    }
+
+    .service-container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .service-container h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+
+    .service-container p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .price-card {
+      background: #fff;
+      border-left: 5px solid #14b8a6;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      transition: transform 0.3s;
+    }
+
+    .price-card:hover {
+      transform: scale(1.03);
+    }
+
+    .price-card h3 {
+      margin-top: 0;
+      color: #0f172a;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #14b8a6;
+    }
+
+    .price-card ul {
+      padding-left: 18px;
+    }
+
+    .price-card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #14b8a6;
+      color: white;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .price-card a:hover {
+      background: #0f766e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0f172a;
+      color: white;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-title">
+    <img src="logo.jpg" alt="SJ Logo" />
+    <h2>SJ Creative Labs</h2>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="cta-buttons">
+    <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank">Instagram</a>
+    <a href="https://facebook.com/sjcreativelabs" target="_blank">Facebook</a>
+    <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service" target="_blank">WhatsApp</a>
+  </div>  
+</header>
+
+<div class="service-container">
+  <h1>Branding & Design</h1>
+  <p>We create stunning visuals, powerful messaging, and strong brand systems to help businesses stand out and scale up.</p>
+
+  <div class="pricing">
+    <div class="price-card">
+      <h3>Logo & Identity</h3>
+      <div class="price">₹2,499</div>
+      <ul>
+        <li>Custom Logo Design</li>
+        <li>Color Palette</li>
+        <li>Typography Style</li>
+      </ul>
+      <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service">Get This</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Branding Kit</h3>
+      <div class="price">₹4,999</div>
+      <ul>
+        <li>Logo Package</li>
+        <li>Social Media Templates</li>
+        <li>Brand Guidelines</li>
+      </ul>
+      <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service">Book Now</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Marketing Collateral</h3>
+      <div class="price">₹6,999</div>
+      <ul>
+        <li>Brochures / Flyers</li>
+        <li>Business Cards</li>
+        <li>Presentation Deck</li>
+      </ul>
+      <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service">Get Started>Book Now</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 SJ Creative Labs. All rights reserved.
+</footer>
+
+</body>
+</html>

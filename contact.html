@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - SJ Creative Labs</title>
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 1em 2em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #14b8a6;
+      flex-wrap: wrap;
+    }
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-title img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #14b8a6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .cta-buttons a {
+      padding: 8px 14px;
+      background-color: #14b8a6;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .cta-buttons a:hover {
+      background-color: #0f766e;
+      transform: scale(1.05);
+    }
+
+    .call-button {
+      background-color: #22c55e; /* Green */
+    }
+
+    .call-button:hover {
+      background-color: #15803d;
+    }
+
+    .call-text {
+      animation: pulse 1.2s infinite;
+      margin-left: 5px;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .contact {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .contact h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .contact p {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    iframe {
+      width: 100%;
+      height: 2433px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0f172a;
+      color: white;
+      margin-top: 50px;
+    }
+    .floating-call {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #22c55e;
+  color: white;
+  font-size: 24px;
+  padding: 12px 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  text-decoration: none;
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.floating-call:hover {
+  background-color: #15803d;
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="logo.jpg" alt="SJ Logo" />
+      <h2>SJ Creative Labs</h2>
+    </div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+
+    <div class="cta-buttons">
+      <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank">Instagram</a>
+      <a href="https://facebook.com/sjcreativelabs" target="_blank">Facebook</a>
+      <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service" target="_blank">WhatsApp</a>
+    </div>
+  </header>
+
+  <section class="contact">
+    <h1>Let’s Work Together</h1>
+    <p>Fill out this form and we’ll reach out shortly to discuss your goals.</p>
+
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSfv8GIiLTOTK1dyKVVGIX_hCYe8TGKkhr4S5DDsjcOw0Fgqdg/viewform?embedded=true"
+      loading="lazy"
+    >Loading…</iframe>
+  </section>
+  <a href="tel:+919346124421" class="floating-call" title="Call SJ Creative Labs">📞</a>
+
+  <footer>
+    &copy; 2025 SJ Creative Labs. All rights reserved.
+  </footer>
+</body>
+</html>
