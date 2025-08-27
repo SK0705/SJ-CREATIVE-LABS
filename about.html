@@ -8,27 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Define CSS Variables for easier theme management */
-            --primary-color: #14b8a6; /* Teal */
-            --secondary-color: #0f766e; /* Darker Teal */
-            --dark-blue: #0f172a; /* Dark Blue */
-            --text-color: #111827; /* Dark Gray for text */
-            --light-gray: #f9fafb; /* Light background */
+            --primary-color: #14b8a6;
+            --secondary-color: #0f766e;
+            --dark-blue: #0f172a;
+            --text-color: #111827;
+            --light-gray: #f9fafb;
             --white: #ffffff;
             --shadow-light: rgba(0, 0, 0, 0.05);
             --shadow-medium: rgba(0, 0, 0, 0.1);
         }
 
-        /* Keyframe Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
@@ -38,7 +30,7 @@
 
         body {
             margin: 0;
-            font-family: 'Roboto', sans-serif; /* Use Roboto for body text */
+            font-family: 'Roboto', sans-serif;
             background-color: var(--light-gray);
             color: var(--text-color);
             line-height: 1.6;
@@ -52,40 +44,35 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 4px solid var(--primary-color);
-            flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
+            flex-wrap: wrap;
         }
 
         .logo-title {
             display: flex;
             align-items: center;
-            gap: 10px; /* Use gap for spacing */
-        }
-
-        .logo-title img {
-            height: 40px;
-            /* Consider object-fit: contain if your logo has varying dimensions */
+            gap: 10px;
         }
 
         .logo-title h2 {
-            font-family: 'Poppins', sans-serif; /* Use Poppins for titles */
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            margin: 0; /* Remove default h2 margin */
+            margin: 0;
         }
 
         nav {
             display: flex;
-            gap: 20px; /* Use gap for navigation items */
+            gap: 20px;
             flex-wrap: wrap;
-            justify-content: center; /* Center nav items on smaller screens */
-            margin: 10px 0; /* Add vertical margin for wrap */
+            justify-content: center;
+            margin: 10px 0;
         }
 
         nav a {
             color: var(--white);
             text-decoration: none;
-            font-weight: 600; /* Poppins semi-bold */
+            font-weight: 600;
             padding: 5px 0;
-            position: relative; /* For underline effect */
+            position: relative;
             transition: color 0.3s ease;
         }
 
@@ -101,48 +88,43 @@
         }
 
         nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
+        nav a.active::after { width: 100%; }
 
         nav a:hover,
-        nav a.active {
-            color: var(--primary-color);
-        }
+        nav a.active { color: var(--primary-color); }
 
         .cta-buttons {
             display: flex;
-            gap: 10px; /* Space out CTA buttons */
+            gap: 10px;
             flex-wrap: wrap;
-            justify-content: center; /* Center CTA buttons on smaller screens */
+            justify-content: center;
         }
 
         .cta-buttons a {
-            padding: 8px 16px; /* Slightly more padding */
+            padding: 8px 16px;
             background-color: var(--primary-color);
-            border-radius: 8px; /* Slightly more rounded */
+            border-radius: 8px;
             text-decoration: none;
             color: var(--white);
             transition: background-color 0.3s ease, transform 0.2s ease;
             font-weight: 600;
-            white-space: nowrap; /* Prevent buttons from breaking words */
+            white-space: nowrap;
         }
 
         .cta-buttons a:hover {
             background-color: var(--secondary-color);
-            transform: translateY(-2px); /* Subtle hover effect */
+            transform: translateY(-2px);
         }
 
-        /* Main Content Section Styles */
         .about {
             max-width: 1000px;
             margin: 60px auto;
-            padding: 0 25px; /* Slightly more padding on sides */
+            padding: 0 25px;
         }
 
         .about h1 {
             text-align: center;
-            font-size: 3.5rem; /* Larger heading */
+            font-size: 3.5rem;
             margin-bottom: 20px;
             color: var(--dark-blue);
             animation: fadeInUp 0.8s ease forwards;
@@ -152,13 +134,13 @@
         }
 
         .about p {
-            font-size: 1.15rem; /* Slightly larger text */
+            font-size: 1.15rem;
             margin-bottom: 25px;
             text-align: center;
-            color: #333; /* Slightly darker for better readability */
+            color: #333;
             animation: fadeIn 0.8s ease forwards;
             opacity: 0;
-            max-width: 800px; /* Constrain paragraph width for better readability */
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -168,25 +150,25 @@
 
         .mission-vision {
             display: flex;
-            justify-content: center; /* Center items when they don't fill space */
+            justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 50px; /* More margin */
+            margin-top: 50px;
         }
 
         .mission-box {
             flex: 1;
-            min-width: 300px; /* Ensure boxes don't get too small */
+            min-width: 300px;
             background-color: var(--white);
-            padding: 30px; /* More padding */
+            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px var(--shadow-light); /* Softer shadow */
+            box-shadow: 0 4px 15px var(--shadow-light);
             transition: all 0.3s ease;
             animation: fadeIn 0.6s ease forwards;
             opacity: 0;
-            display: flex; /* Use flexbox for content alignment */
+            display: flex;
             flex-direction: column;
-            align-items: center; /* Center text within box */
+            align-items: center;
             text-align: center;
         }
 
@@ -194,7 +176,7 @@
         .mission-box:nth-child(2) { animation-delay: 0.4s; }
 
         .mission-box:hover {
-            transform: translateY(-8px); /* More pronounced lift */
+            transform: translateY(-8px);
             box-shadow: 0 12px 25px var(--shadow-medium);
         }
 
@@ -202,26 +184,25 @@
             margin-bottom: 15px;
             color: var(--primary-color);
             font-family: 'Poppins', sans-serif;
-            font-size: 1.8rem; /* Larger heading */
+            font-size: 1.8rem;
             font-weight: 600;
         }
 
         .mission-box p {
-            font-size: 1rem; /* Adjust font size for mission/vision text */
-            margin-bottom: 0; /* Remove default paragraph margin */
+            font-size: 1rem;
+            margin-bottom: 0;
             color: #444;
         }
 
-        /* Team Section Styles */
         .team-section {
-            margin-top: 80px; /* More spacing */
+            margin-top: 80px;
         }
 
         .team-section h2 {
             text-align: center;
-            font-size: 2.8rem; /* Larger team heading */
+            font-size: 2.8rem;
             color: var(--dark-blue);
-            margin-bottom: 40px; /* More spacing below heading */
+            margin-bottom: 40px;
             animation: fadeIn 0.8s ease forwards;
             opacity: 0;
             animation-delay: 0.8s;
@@ -231,8 +212,8 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Slightly larger min-width */
-            gap: 30px; /* More gap between cards */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
             margin-top: 30px;
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
@@ -241,7 +222,7 @@
 
         .team-card {
             background-color: var(--white);
-            padding: 20px; /* More padding */
+            padding: 20px;
             border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 15px var(--shadow-light);
@@ -254,99 +235,47 @@
             box-shadow: 0 12px 25px var(--shadow-medium);
         }
 
-        .team-card img {
-            width: 150px; /* Fixed width for consistent team images */
-            height: 150px; /* Fixed height */
-            border-radius: 50%; /* Make images circular */
-            object-fit: cover;
-            margin-bottom: 15px; /* Space below image */
-            border: 3px solid var(--primary-color); /* Add a subtle border */
-            transition: transform 0.5s ease, border-color 0.3s ease;
-        }
-
-        .team-card:hover img {
-            transform: scale(1.1); /* Zoom effect */
-            border-color: var(--secondary-color);
-        }
-
         .team-card h3 {
-            margin: 0 0 8px; /* Adjust margin */
-            color: var(--dark-blue); /* Stronger color for names */
+            margin: 0 0 8px;
+            color: var(--dark-blue);
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1.4rem; /* Larger name font */
+            font-size: 1.4rem;
             transition: color 0.3s ease;
         }
 
-        .team-card:hover h3 {
-            color: var(--primary-color);
-        }
+        .team-card:hover h3 { color: var(--primary-color); }
 
         .team-card p {
-            font-size: 1rem; /* Clearer role font size */
+            font-size: 1rem;
             color: #555;
-            margin: 0; /* Remove default paragraph margin */
+            margin: 0;
         }
 
-        /* Footer for copyright and potential links */
         footer {
             background-color: var(--dark-blue);
             color: var(--white);
             text-align: center;
             padding: 2em;
-            margin-top: 80px; /* Space above footer */
+            margin-top: 80px;
             font-size: 0.9rem;
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav {
-                margin-top: 20px;
-                flex-direction: column; /* Stack nav items vertically */
-                align-items: center; /* Center stacked nav items */
-                gap: 10px;
-            }
-
-            .cta-buttons {
-                margin-top: 20px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about h1 {
-                font-size: 2.5rem;
-            }
-
-            .about p {
-                font-size: 1rem;
-            }
-
-            .mission-vision {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .mission-box {
-                min-width: unset; /* Remove min-width on small screens */
-                width: 100%; /* Take full width */
-                max-width: 400px; /* Limit width to prevent it from being too wide */
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr; /* Single column on small screens */
-            }
+            header { flex-direction: column; text-align: center; }
+            nav { margin-top: 20px; flex-direction: column; align-items: center; gap: 10px; }
+            .cta-buttons { margin-top: 20px; flex-direction: column; align-items: center; }
+            .about h1 { font-size: 2.5rem; }
+            .about p { font-size: 1rem; }
+            .mission-vision { flex-direction: column; align-items: center; }
+            .mission-box { min-width: unset; width: 100%; max-width: 400px; }
+            .team-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-title">
-            <img src="logo.jpg" alt="SJ Creative Labs Logo" />
             <h2>SJ Creative Labs</h2>
         </div>
         <nav>
@@ -356,16 +285,17 @@
             <a href="contact.html">Contact</a>
         </nav>
         <div class="cta-buttons">
-            <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">Instagram</a>
-            <a href="https://facebook.com/sjcreativelabs" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on Facebook">Facebook</a>
-            <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">WhatsApp</a>
+            <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://facebook.com/sjcreativelabs" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
     </header>
 
-    <main> <section class="about">
+    <main>
+        <section class="about">
             <h1>Who We Are</h1>
             <p><strong>SJ Creative Labs</strong> is a student-led digital startup based in Andhra Pradesh, India. Our mission is to help startups and small businesses grow through creative design, smart digital marketing, and innovative technology.</p>
-            <p>We're more than just a service provider — we’re your **creative growth partner**, empowering the next generation of entrepreneurs with affordable, high-quality digital solutions.</p>
+            <p>We're more than just a service provider — we’re your <strong>creative growth partner</strong>, empowering the next generation of entrepreneurs with affordable, high-quality digital solutions.</p>
 
             <div class="mission-vision">
                 <div class="mission-box">
@@ -382,31 +312,13 @@
                 <h2>Meet Our Team</h2>
                 <div class="team-grid">
                     <div class="team-card">
-                        <img src="path/to/srikar.jpg" alt="Srikar - CEO & Founder">
                         <h3>Srikar</h3>
                         <p>CEO & Founder</p>
                     </div>
                     <div class="team-card">
-                        <img src="path/to/jaydheer.jpg" alt="Jaydheer - COO & Co-Founder">
                         <h3>Jaydheer</h3>
                         <p>COO & Co-Founder</p>
                     </div>
-                    <div class="team-card">
-                        <img src="path/to/sandeep.jpg" alt="Sandeep - CTO">
-                        <h3>Sandeep</h3>
-                        <p>CTO</p>
-                    </div>
-                    <div class="team-card">
-                        <img src="path/to/vasanth.jpg" alt="Vasanth - CMO">
-                        <h3>Vasanth</h3>
-                        <p>CMO</p>
-                    </div>
-                    <div class="team-card">
-                        <img src="path/to/teja.jpg" alt="Teja - Client Relations">
-                        <h3>Teja</h3>
-                        <p>Client Relations</p>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
