@@ -212,9 +212,10 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
             gap: 30px;
             margin-top: 30px;
+            justify-content: center; /* center align incomplete rows */
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
             animation-delay: 1s;
@@ -228,6 +229,8 @@
             box-shadow: 0 4px 15px var(--shadow-light);
             transition: all 0.3s ease;
             overflow: hidden;
+            max-width: 250px;
+            margin: auto;
         }
 
         .team-card:hover {
@@ -321,16 +324,17 @@
                     </div>
                     <div class="team-card">
                         <h3>Teja</h3>
-                        <p>Client Relations </p>
+                        <p>Client Relations</p>
                     </div>
                     <div class="team-card">
-                        <h3>Sandeep </h3>
+                        <h3>Sandeep</h3>
                         <p>CTO</p>
                     </div>
                     <div class="team-card">
                         <h3>Vasanth</h3>
                         <p>CMO</p>
                     </div>
+                </div>
             </div>
         </section>
     </main>
@@ -340,4 +344,3 @@
     </footer>
 </body>
 </html>
-
