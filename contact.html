@@ -163,13 +163,22 @@
 
     .field {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
     }
 
     .field input,
     .field textarea,
     .field select {
       width: 100%;
-      padding: 14px 14px;
+      padding: 12px 14px;
       border-radius: 10px;
       border: 1px solid #d1d5db;
       font-size: 1rem;
@@ -240,25 +249,123 @@
       margin-top: 80px;
     }
 
-    /* ===== WhatsApp Floating Button ===== */
-    .floating-call {
+    /* ===== WhatsApp Chat Widget ===== */
+    .whatsapp-widget {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      font-family: inherit;
+    }
+
+    .wa-toggle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
       background-color: #22c55e;
       color: white;
-      font-size: 26px;
-      padding: 14px 16px;
-      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      text-decoration: none;
-      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.3s ease;
     }
 
-    .floating-call:hover {
+    .wa-toggle:hover {
       background-color: #15803d;
-      transform: scale(1.1);
+      transform: scale(1.08);
+    }
+
+    .wa-chatbox {
+      position: absolute;
+      right: 0;
+      bottom: 70px;
+      width: 260px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      padding: 14px 14px 12px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .wa-chatbox.open { display: flex; }
+
+    .wa-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .wa-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .wa-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    .wa-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .wa-status {
+      font-size: 0.8rem;
+      color: #16a34a;
+    }
+
+    .wa-close {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    .wa-body {
+      font-size: 0.85rem;
+      color: #4b5563;
+      background: #f3f4f6;
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
+
+    .wa-button {
+      margin-top: 4px;
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 9px 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+
+    .wa-button:hover {
+      background: #15803d;
+      transform: translateY(-1px);
     }
 
     @media (max-width: 900px) {
@@ -339,29 +446,53 @@
     <p>We usually respond within one business day.</p>
 
     <form id="form">
+      <!-- Web3Forms access key -->
       <input type="hidden" name="access_key" value="3c39578b-dd7c-49e9-9f7f-a10b86ce6dbc">
+      <!-- Honeypot -->
       <input type="text" name="website" class="hp-field">
 
       <div class="field">
-        <input type="text" name="name" placeholder="Your Full Name" required>
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name" placeholder="Your full name" required>
       </div>
 
       <div class="field">
-        <input type="email" name="email" placeholder="Your Email Address" required>
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" required>
       </div>
 
       <div class="field">
-        <select name="service" required>
-          <option value="">Select a Service</option>
+        <label for="service">Select a Service</label>
+        <select id="service" name="service" required>
+          <option value="">Choose an option</option>
           <option>Website Development</option>
-          <option>UI / UX Design</option>
-          <option>Branding</option>
-          <option>SEO & Marketing</option>
+          <option>Social Media Marketing</option>
+          <option>Search Engine Optimization</option>
+          <option>Branding & Design</option>
+          <option>Video Editing</option>
+          <option>Poster & Flex Design</option>
+          <option>Advertising Solutions</option>
+          <option>Custom Greeting Designs</option>
+          <option>Startup Booster Package 🚀</option>
+          <option>Other Service</option>
         </select>
       </div>
 
+      <div class="field" id="other-service-wrapper" style="display:none;">
+        <label for="otherService">Mention required service</label>
+        <input id="otherService" type="text" name="other_service" placeholder="Describe the service you need">
+      </div>
+
+      <div class="field" id="startup-wrapper" style="display:none;">
+        <label for="startupReport">Brief project report (Startup idea)</label>
+        <textarea id="startupReport" name="startup_report"
+                  placeholder="Share a brief overview of your startup: problem, solution, target audience, and goals."></textarea>
+      </div>
+
       <div class="field">
-        <textarea name="message" placeholder="Describe your project needs..." required></textarea>
+        <label for="message">Project Details</label>
+        <textarea id="message" name="message"
+                  placeholder="Describe your project, goals, budget range, and timeline." required></textarea>
       </div>
 
       <button type="submit">Send Enquiry</button>
@@ -373,7 +504,29 @@
 
 </section>
 
-<a href="https://wa.me/919346124421" class="floating-call" target="_blank" title="Chat on WhatsApp">💬</a>
+<!-- WhatsApp live chat widget -->
+<div class="whatsapp-widget">
+  <div class="wa-chatbox" id="wa-chatbox">
+    <div class="wa-header">
+      <div class="wa-header-left">
+        <div class="wa-avatar">💬</div>
+        <div>
+          <div class="wa-name">SJ Creative Labs</div>
+          <div class="wa-status">Typically replies fast</div>
+        </div>
+      </div>
+      <button class="wa-close" id="wa-close">&times;</button>
+    </div>
+    <div class="wa-body">
+      Got a quick question? Chat with us on WhatsApp for faster responses.
+    </div>
+    <button class="wa-button" id="wa-start-chat">
+      <span>Open WhatsApp Chat</span>
+    </button>
+  </div>
+
+  <button class="wa-toggle" id="wa-toggle" title="Chat on WhatsApp">💬</button>
+</div>
 
 <footer>
   &copy; 2025 SJ Creative Labs. All rights reserved.
@@ -385,6 +538,52 @@
   const successBox = document.getElementById("success");
   const errorBox = document.getElementById("error");
 
+  const serviceSelect = document.getElementById('service');
+  const otherWrapper = document.getElementById('other-service-wrapper');
+  const otherInput = document.getElementById('otherService');
+  const startupWrapper = document.getElementById('startup-wrapper');
+  const startupTextarea = document.getElementById('startupReport');
+
+  // Show/hide extra fields based on selected service
+  function handleServiceChange() {
+    const value = serviceSelect.value;
+
+    if (value === 'Other Service') {
+      otherWrapper.style.display = 'flex';
+      otherInput.required = true;
+    } else {
+      otherWrapper.style.display = 'none';
+      otherInput.required = false;
+      otherInput.value = "";
+    }
+
+    if (value === 'Startup Booster Package 🚀') {
+      startupWrapper.style.display = 'flex';
+      startupTextarea.required = true;
+    } else {
+      startupWrapper.style.display = 'none';
+      startupTextarea.required = false;
+      startupTextarea.value = "";
+    }
+  }
+
+  serviceSelect.addEventListener('change', handleServiceChange);
+
+  // Preselect service based on URL param (?service=...)
+  (function preselectServiceFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const targetService = params.get('service');
+    if (!targetService) return;
+
+    for (const option of serviceSelect.options) {
+      if (option.value === targetService) {
+        serviceSelect.value = targetService;
+        serviceSelect.dispatchEvent(new Event('change'));
+        break;
+      }
+    }
+  })();
+
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
     successBox.style.display = "none";
@@ -392,6 +591,18 @@
 
     const hp = form.querySelector('input[name="website"]');
     if (hp.value !== "") return;
+
+    const selectedService = serviceSelect.value;
+    if (selectedService === 'Other Service' && otherInput.value.trim() === "") {
+      errorBox.textContent = "Please mention the required service.";
+      errorBox.style.display = "block";
+      return;
+    }
+    if (selectedService === 'Startup Booster Package 🚀' && startupTextarea.value.trim() === "") {
+      errorBox.textContent = "Please share a brief project report for your startup idea.";
+      errorBox.style.display = "block";
+      return;
+    }
 
     btn.disabled = true;
     const originalText = btn.textContent;
@@ -408,22 +619,36 @@
       const data = await res.json();
 
       if (res.ok) {
-        successBox.textContent = "Success! Your enquiry has been sent. Redirecting to WhatsApp...";
+        successBox.textContent = "Success! Your enquiry has been sent. Opening WhatsApp...";
         successBox.style.display = "block";
-        form.reset();
 
-        const name = formData.get("name");
-        const service = formData.get("service");
+        const name = formData.get("name") || "";
+        const email = formData.get("email") || "";
+        let service = formData.get("service") || "";
+        const otherService = formData.get("other_service") || "";
+        const startupReport = formData.get("startup_report") || "";
+        const mainMessage = formData.get("message") || "";
 
-        const msg = `New Enquiry from Website:%0AName: ${encodeURIComponent(name)}%0AService: ${encodeURIComponent(service)}`;
+        if (service === "Other Service" && otherService) {
+          service = "Other: " + otherService;
+        }
+
+        let waText = `New enquiry from SJ Creative Labs website:%0A`;
+        waText += `Name: ${encodeURIComponent(name)}%0A`;
+        waText += `Email: ${encodeURIComponent(email)}%0A`;
+        waText += `Service: ${encodeURIComponent(service)}%0A`;
+        if (startupReport) {
+          waText += `Startup Brief: ${encodeURIComponent(startupReport)}%0A`;
+        }
+        waText += `%0AMessage: ${encodeURIComponent(mainMessage)}`;
 
         setTimeout(() => {
-          window.open("https://wa.me/919346124421?text=" + msg, "_blank");
+          window.open("https://wa.me/919346124421?text=" + waText, "_blank");
         }, 1500);
 
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 5000);
+        form.reset();
+        serviceSelect.value = "";
+        handleServiceChange();
 
       } else {
         errorBox.textContent = data.message || "Submission failed. Try again.";
@@ -437,6 +662,25 @@
 
     btn.textContent = originalText;
     btn.disabled = false;
+  });
+
+  // WhatsApp widget logic
+  const waToggle = document.getElementById('wa-toggle');
+  const waChatbox = document.getElementById('wa-chatbox');
+  const waClose = document.getElementById('wa-close');
+  const waStartChat = document.getElementById('wa-start-chat');
+
+  waToggle.addEventListener('click', () => {
+    waChatbox.classList.toggle('open');
+  });
+
+  waClose.addEventListener('click', () => {
+    waChatbox.classList.remove('open');
+  });
+
+  waStartChat.addEventListener('click', () => {
+    const defaultText = encodeURIComponent("Hi SJ Creative Labs, I have an enquiry.");
+    window.open("https://wa.me/919346124421?text=" + defaultText, "_blank");
   });
 </script>
 
