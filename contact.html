@@ -7,13 +7,16 @@
   <link rel="icon" href="favicon-32x32.png" type="image/png">
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      background-color: #f9fafb;
+      background: linear-gradient(120deg, #f9fafb, #ecfeff);
       color: #111827;
     }
 
+    /* ===== Header ===== */
     header {
       background-color: #0f172a;
       color: white;
@@ -40,10 +43,23 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
+      position: relative;
     }
 
-    nav a:hover {
-      color: #14b8a6;
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: #14b8a6;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
     }
 
     .cta-buttons {
@@ -56,129 +72,373 @@
     .cta-buttons a {
       padding: 8px 14px;
       background-color: #14b8a6;
-      border-radius: 6px;
+      border-radius: 999px;
       text-decoration: none;
       color: white;
       font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
     }
 
     .cta-buttons a:hover {
       background-color: #0f766e;
-      transform: scale(1.05);
+      transform: translateY(-2px);
     }
 
-    .call-button {
-      background-color: #22c55e; /* Green */
-    }
-
-    .call-button:hover {
-      background-color: #15803d;
-    }
-
-    .call-text {
-      animation: pulse 1.2s infinite;
-      margin-left: 5px;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; }
-      50% { opacity: 0.6; }
-      100% { opacity: 1; }
-    }
-
+    /* ===== Contact Section ===== */
     .contact {
-      max-width: 900px;
-      margin: 50px auto;
+      max-width: 1100px;
+      margin: 70px auto;
       padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
     }
 
-    .contact h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+    .contact-info h1 {
+      font-size: 2.8rem;
       color: #0f172a;
+      margin-bottom: 12px;
     }
 
-    .contact p {
-      text-align: center;
-      margin-bottom: 40px;
+    .contact-info p {
       font-size: 1.1rem;
-      color: #555;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 25px;
     }
 
-    iframe {
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover { transform: translateY(-4px); }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #14b8a6;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 20px;
+    }
+
+    /* ===== Form Card ===== */
+    .form-card {
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .form-card h2 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .form-card p {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    form { display: grid; gap: 20px; }
+
+    .field {
+      position: relative;
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
       width: 100%;
-      height: 2433px;
+      padding: 14px 14px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.25s ease;
+      background: white;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: #14b8a6;
+      box-shadow: 0 0 0 3px rgba(20,184,166,0.2);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+
+    button {
+      margin-top: 10px;
+      background: linear-gradient(135deg, #14b8a6, #0f766e);
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      color: white;
+      padding: 14px;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(20,184,166,0.35);
+    }
+
+    button:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    .status {
+      font-size: 0.95rem;
+      padding: 12px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .status.success {
+      background: #ecfdf5;
+      border: 1px solid #22c55e;
+      color: #166534;
+    }
+
+    .status.error {
+      background: #fef2f2;
+      border: 1px solid #ef4444;
+      color: #991b1b;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       background-color: #0f172a;
       color: white;
-      margin-top: 50px;
+      margin-top: 80px;
     }
+
+    /* ===== WhatsApp Floating Button ===== */
     .floating-call {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #22c55e;
-  color: white;
-  font-size: 24px;
-  padding: 12px 16px;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  text-decoration: none;
-  z-index: 999;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #22c55e;
+      color: white;
+      font-size: 26px;
+      padding: 14px 16px;
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      text-decoration: none;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
 
-.floating-call:hover {
-  background-color: #15803d;
-  transform: scale(1.1);
-}
+    .floating-call:hover {
+      background-color: #15803d;
+      transform: scale(1.1);
+    }
 
+    @media (max-width: 900px) {
+      .contact {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="logo-title">
-      <img src="logo.jpg" alt="SJ Logo" />
-      <h2>SJ Creative Labs</h2>
+
+<header>
+  <div class="logo-title">
+    <img src="logo.jpg" alt="SJ Logo" />
+    <h2>SJ Creative Labs</h2>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <div class="cta-buttons">
+    <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank">Instagram</a>
+    <a href="https://facebook.com/sjcreativelabs" target="_blank">Facebook</a>
+    <a href="https://wa.me/919346124421" target="_blank">WhatsApp</a>
+  </div>
+</header>
+
+<section class="contact">
+
+  <!-- Left Info -->
+  <div class="contact-info">
+    <h1>Let’s Build Something Great</h1>
+    <p>Tell us about your project and goals. Our team will reach out quickly with a tailored solution.</p>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-icon">💬</div>
+        <div>
+          <strong>Instant WhatsApp</strong><br>
+          +91 9346124421
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">⚡</div>
+        <div>
+          <strong>Fast Response</strong><br>
+          Within 24 Hours
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🎨</div>
+        <div>
+          <strong>Creative Design</strong><br>
+          Modern UI/UX
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🔒</div>
+        <div>
+          <strong>Data Protection</strong><br>
+          100% Secure
+        </div>
+      </div>
     </div>
+  </div>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
+  <!-- Right Form -->
+  <div class="form-card">
+    <h2>Start Your Project</h2>
+    <p>We usually respond within one business day.</p>
 
-    <div class="cta-buttons">
-      <a href="https://www.instagram.com/sj.creative_labs?igsh=NDV3OXVlZGo3bWY0" target="_blank">Instagram</a>
-      <a href="https://facebook.com/sjcreativelabs" target="_blank">Facebook</a>
-      <a href="https://wa.me/919346124421?text=Hi%20SJ%20Creative%20Labs%2C%20I'm%20interested%20in%20your%20Web%20Development%20service" target="_blank">WhatsApp</a>
-    </div>
-  </header>
+    <form id="form">
+      <input type="hidden" name="access_key" value="3c39578b-dd7c-49e9-9f7f-a10b86ce6dbc">
+      <input type="text" name="website" class="hp-field">
 
-  <section class="contact">
-    <h1>Let’s Work Together</h1>
-    <p>Fill out this form and we’ll reach out shortly to discuss your goals.</p>
+      <div class="field">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+      </div>
 
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSfv8GIiLTOTK1dyKVVGIX_hCYe8TGKkhr4S5DDsjcOw0Fgqdg/viewform?embedded=true"
-      loading="lazy"
-    >Loading…</iframe>
-  </section>
-  <a href="tel:+919346124421" class="floating-call" title="Call SJ Creative Labs">📞</a>
+      <div class="field">
+        <input type="email" name="email" placeholder="Your Email Address" required>
+      </div>
 
-  <footer>
-    &copy; 2025 SJ Creative Labs. All rights reserved.
-  </footer>
+      <div class="field">
+        <select name="service" required>
+          <option value="">Select a Service</option>
+          <option>Website Development</option>
+          <option>UI / UX Design</option>
+          <option>Branding</option>
+          <option>SEO & Marketing</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <textarea name="message" placeholder="Describe your project needs..." required></textarea>
+      </div>
+
+      <button type="submit">Send Enquiry</button>
+
+      <div id="success" class="status success"></div>
+      <div id="error" class="status error"></div>
+    </form>
+  </div>
+
+</section>
+
+<a href="https://wa.me/919346124421" class="floating-call" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<footer>
+  &copy; 2025 SJ Creative Labs. All rights reserved.
+</footer>
+
+<script>
+  const form = document.getElementById('form');
+  const btn = form.querySelector("button");
+  const successBox = document.getElementById("success");
+  const errorBox = document.getElementById("error");
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+    successBox.style.display = "none";
+    errorBox.style.display = "none";
+
+    const hp = form.querySelector('input[name="website"]');
+    if (hp.value !== "") return;
+
+    btn.disabled = true;
+    const originalText = btn.textContent;
+    btn.textContent = "Sending...";
+
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        successBox.textContent = "Success! Your enquiry has been sent. Redirecting to WhatsApp...";
+        successBox.style.display = "block";
+        form.reset();
+
+        const name = formData.get("name");
+        const service = formData.get("service");
+
+        const msg = `New Enquiry from Website:%0AName: ${encodeURIComponent(name)}%0AService: ${encodeURIComponent(service)}`;
+
+        setTimeout(() => {
+          window.open("https://wa.me/919346124421?text=" + msg, "_blank");
+        }, 1500);
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 5000);
+
+      } else {
+        errorBox.textContent = data.message || "Submission failed. Try again.";
+        errorBox.style.display = "block";
+      }
+
+    } catch (err) {
+      errorBox.textContent = "Network error. Please try again.";
+      errorBox.style.display = "block";
+    }
+
+    btn.textContent = originalText;
+    btn.disabled = false;
+  });
+</script>
+
 </body>
 </html>
