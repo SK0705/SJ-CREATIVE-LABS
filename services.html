@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services - SJ CREATIVE LABS</title>
+
   <link rel="icon" href="favicon-32x32.png" type="image/png">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
@@ -67,7 +72,7 @@
     h1 {
       font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .service-grid {
@@ -76,22 +81,47 @@
       gap: 30px;
     }
 
+    /* SERVICE CARD */
     .service-card {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      padding: 25px 20px;
       text-align: center;
-      transition: 0.3s ease-in-out;
       border-left: 4px solid #14b8a6;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .service-card.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .service-card:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 42px;
+      color: #14b8a6;
+      margin-bottom: 15px;
+    }
+
+    .category {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background-color: #e0f2f1;
+      color: #0f766e;
+      margin-bottom: 10px;
     }
 
     .service-card h3 {
-      margin-top: 0;
+      margin-top: 10px;
       color: #0f172a;
     }
 
@@ -103,14 +133,38 @@
     .service-card a {
       background-color: #14b8a6;
       color: white;
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
     }
 
     .service-card a:hover {
       background-color: #0f766e;
+    }
+
+    /* FEATURED CARD */
+    .service-card.featured {
+      background: linear-gradient(135deg, #14b8a6, #0f766e);
+      color: white;
+      border-left: none;
+    }
+
+    .service-card.featured .service-icon,
+    .service-card.featured h3,
+    .service-card.featured p {
+      color: white;
+    }
+
+    .service-card.featured .category {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .service-card.featured a {
+      background-color: white;
+      color: #0f766e;
     }
 
     footer {
@@ -118,84 +172,131 @@
       padding: 20px;
       background-color: #0f172a;
       color: white;
-      margin-top: 50px;
+      margin-top: 60px;
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <div class="logo-title">
-    <img src="logo.jpg" alt="SJ CREATIVE LABS Logo" />
+    <img src="logo.jpg" alt="SJ CREATIVE LABS Logo">
     <h2>SJ CREATIVE LABS</h2>
   </div>
+
   <nav>
     <a href="index.html">Home</a>
-    <a href="services.html" class="active">Services</a>
+    <a href="services.html">Services</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
+
   <div class="cta-buttons">
-    <a href="https://www.instagram.com/sjcreativelabs" target="_blank">Instagram</a>
-    <a href="https://facebook.com/sjcreativelabs" target="_blank">Facebook</a>
-    <a href="https://wa.me/919346124421?text=Hi%20SJ%20CREATIVE%20LABS%2C%20I'm%20interested%20in%20your%20service" target="_blank">WhatsApp</a>
-  </div>  
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">WhatsApp</a>
+  </div>
 </header>
 
 <main class="services-container">
   <h1>Our Services</h1>
+
   <div class="service-grid">
+
     <div class="service-card">
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-code"></i></div>
       <h3>Website Development</h3>
-      <p>From basic websites to full-stack apps, we build it all.</p>
+      <p>From basic websites to full-stack apps.</p>
       <a href="webdev.html">Explore</a>
     </div>
+
     <div class="service-card">
-      <h3>Social Media Marketing</h3>
-      <p>Engage, grow, and convert through modern social campaigns.</p>
-      <a href="marketing.html">Explore</a>
-    </div>
-    <div class="service-card">
-      <h3>Search Engine Optimization</h3>
-      <p>Rank higher. Get found. Grow organically.</p>
-      <a href="seo.html">Explore</a>
-    </div>
-    <div class="service-card">
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-palette"></i></div>
       <h3>Branding & Design</h3>
-      <p>Visual storytelling that speaks your brand language.</p>
+      <p>Visual storytelling for your brand.</p>
       <a href="branding&design.html">Explore</a>
     </div>
+
     <div class="service-card">
-      <h3>Video Editing</h3>
-      <p>Professional video edits that captivate and engage your audience.</p>
-      <a href="video-editing.html">Explore</a>
+      <span class="category">CORE</span>
+      <div class="service-icon"><i class="fas fa-hashtag"></i></div>
+      <h3>Social Media Marketing</h3>
+      <p>Engage and grow your audience.</p>
+      <a href="marketing.html">Explore</a>
     </div>
+
     <div class="service-card">
-      <h3>Poster & Flex Design</h3>
-      <p>Creative posters and flexes designed to boost your brand presence.</p>
-      <a href="poster-flex.html">Explore</a>
+      <span class="category">GROWTH</span>
+      <div class="service-icon"><i class="fas fa-search"></i></div>
+      <h3>SEO</h3>
+      <p>Rank higher and grow organically.</p>
+      <a href="seo.html">Explore</a>
     </div>
+
     <div class="service-card">
-      <h3>Advertising Solutions</h3>
-      <p>From digital ads to offline campaigns, we help you reach wider audiences.</p>
+      <span class="category">GROWTH</span>
+      <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+      <h3>Advertising</h3>
+      <p>Reach wider audiences effectively.</p>
       <a href="advertising.html">Explore</a>
     </div>
+
     <div class="service-card">
-      <h3>Custom Greeting Designs</h3>
-      <p>Unique birthday, marriage, and occasion greetings tailored for you.</p>
+      <span class="category">CREATIVE</span>
+      <div class="service-icon"><i class="fas fa-video"></i></div>
+      <h3>Video Editing</h3>
+      <p>Professional video editing services.</p>
+      <a href="video-editing.html">Explore</a>
+    </div>
+
+    <div class="service-card">
+      <span class="category">CREATIVE</span>
+      <div class="service-icon"><i class="fas fa-image"></i></div>
+      <h3>Poster & Flex Design</h3>
+      <p>High-impact promotional designs.</p>
+      <a href="poster-flex.html">Explore</a>
+    </div>
+
+    <div class="service-card">
+      <span class="category">CREATIVE</span>
+      <div class="service-icon"><i class="fas fa-gift"></i></div>
+      <h3>Custom Greetings</h3>
+      <p>Personalized designs for all occasions.</p>
       <a href="greetings.html">Explore</a>
     </div>
-    <div class="service-card">
-      <h3>Startup Booster Package 🚀</h3>
-      <p>Everything you need to launch, packed in one deal.</p>
+
+    <div class="service-card featured">
+      <span class="category">FEATURED</span>
+      <div class="service-icon"><i class="fas fa-rocket"></i></div>
+      <h3>Startup Booster Package</h3>
+      <p>Everything you need to launch fast.</p>
       <a href="startup.html">Explore</a>
     </div>
+
   </div>
 </main>
 
 <footer>
   &copy; 2025 SJ CREATIVE LABS. All rights reserved.
 </footer>
+
+<!-- Scroll Animation Script -->
+<script>
+  const cards = document.querySelectorAll('.service-card');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
