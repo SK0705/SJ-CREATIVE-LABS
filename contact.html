@@ -355,10 +355,10 @@ form.addEventListener("submit", async (e) => {
   successBox.style.display = "none";
   errorBox.style.display = "none";
 
-  // Honeypot protection
+  // honeypot
   if (form.website.value !== "") return;
 
-  const data = {
+  const payload = {
     name: form.name.value,
     email: form.email.value,
     service: form.service.value,
@@ -368,27 +368,24 @@ form.addEventListener("submit", async (e) => {
   };
 
   try {
-    const response = await fetch(
+    await fetch(
       "https://script.google.com/macros/s/AKfycbz581uGcEVVYt1bFBHmLvXfCKUgTvmSrywF8-Xrh2d-Dstzjnf8zjNdrBHqZflMT20_Gw/exec",
       {
         method: "POST",
+        mode: "no-cors", // ✅ REQUIRED
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
       }
     );
 
-    const result = await response.json();
+    // We cannot read response in no-cors mode — assume success
+    successBox.textContent =
+      "Thank you! Your enquiry has been submitted successfully.";
+    successBox.style.display = "block";
 
-    if (result.success) {
-      successBox.textContent =
-        "Thank you! Your enquiry has been submitted successfully.";
-      successBox.style.display = "block";
-      form.reset();
-    } else {
-      throw new Error("Submission failed");
-    }
+    form.reset();
 
   } catch (err) {
     errorBox.textContent = "Submission failed. Please try again.";
@@ -398,6 +395,8 @@ form.addEventListener("submit", async (e) => {
 </script>
 
 
+
 </body>
 </html>
+
 
