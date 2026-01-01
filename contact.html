@@ -271,13 +271,6 @@
 
     <form id="form">
 
-      <!-- Web3Forms -->
-      <input type="hidden" name="access_key" value="3c39578b-dd7c-49e9-9f7f-a10b86ce6dbc">
-
-      <!-- Google Apps Script webhook -->
-      <input type="hidden" name="webhook"
-        value="https://script.google.com/macros/s/AKfycbz581uGcEVVYt1bFBHmLvXfCKUgTvmSrywF8-Xrh2d-Dstzjnf8zjNdrBHqZflMT20_Gw/exec">
-
       <!-- Honeypot -->
       <input type="text" name="website" class="hp-field">
 
@@ -355,7 +348,6 @@ form.addEventListener("submit", async (e) => {
   successBox.style.display = "none";
   errorBox.style.display = "none";
 
-  // honeypot
   if (form.website.value !== "") return;
 
   const payload = {
@@ -369,10 +361,10 @@ form.addEventListener("submit", async (e) => {
 
   try {
     await fetch(
-      "https://script.google.com/macros/s/AKfycbz581uGcEVVYt1bFBHmLvXfCKUgTvmSrywF8-Xrh2d-Dstzjnf8zjNdrBHqZflMT20_Gw/exec",
+      "https://script.google.com/macros/s/AKfycbzSBAOsMRZZGGFn7tItcP-f_wn2Vcwpvsb51SUhYFqbabMeBw2H7uFPiKLMLRr-A7sGOQ/exec",
       {
         method: "POST",
-        mode: "no-cors", // ✅ REQUIRED
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
@@ -380,7 +372,6 @@ form.addEventListener("submit", async (e) => {
       }
     );
 
-    // We cannot read response in no-cors mode — assume success
     successBox.textContent =
       "Thank you! Your enquiry has been submitted successfully.";
     successBox.style.display = "block";
@@ -394,9 +385,5 @@ form.addEventListener("submit", async (e) => {
 });
 </script>
 
-
-
 </body>
 </html>
-
-
